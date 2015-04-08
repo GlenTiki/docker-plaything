@@ -4,11 +4,11 @@ RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install -y git curl git-core wget build-essential gcc \
  	python3-dev uuid-dev libc6-dev libglib2.0-dev bison Flex \
- 	libtool autoconf libxml2-dev libpopt-dev python3-sphinx swig && \
- 	export PYTHON="python3" && \
-	export PYTHON_CONFIG="/usr/bin/python3-config"
-	
-RUN	git clone git://git.urcu.so/userspace-rcu.git /home/urcu && \
+ 	libtool autoconf libxml2-dev libpopt-dev python3-sphinx swig
+
+RUN 	export PYTHON="python3" && \
+	export PYTHON_CONFIG="/usr/bin/python3-config" && \
+	git clone git://git.urcu.so/userspace-rcu.git /home/urcu && \
 	cd /home/urcu && \
 	git checkout stable-0.8 &&\
 	./bootstrap && \
@@ -17,7 +17,9 @@ RUN	git clone git://git.urcu.so/userspace-rcu.git /home/urcu && \
 	make install && \
 	ldconfig
 	
-RUN	git clone git://git.efficios.com/babeltrace.git /home/babeltrace && \
+RUN 	export PYTHON="python3" && \
+	export PYTHON_CONFIG="/usr/bin/python3-config" && \
+	git clone git://git.efficios.com/babeltrace.git /home/babeltrace && \
 	cd /home/babeltrace && \
 	git checkout stable-1.2 && \
 	./bootstrap && \
@@ -44,7 +46,7 @@ RUN	git clone git://git.lttng.org/lttng-tools.git /home/lttng-tools && \
 	make install && \
 	ldconfig
 
-RUN	git clone git://git.lttng.org/lttng-modules.git lttng-modules && \
+RUN	git clone git://git.lttng.org/lttng-modules.git /home/lttng-modules && \
 	cd /home/lttng-modules && \
 	git checkout stable-2.6 && \
 	make && \
