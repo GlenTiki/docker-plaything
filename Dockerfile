@@ -46,19 +46,9 @@ RUN	git clone git://git.lttng.org/lttng-tools.git /home/lttng-tools && \
 	make install && \
 	ldconfig
 
-RUN	git clone git://git.lttng.org/lttng-modules.git /home/lttng-modules && \
-	cd /home/lttng-modules && \
-	git checkout stable-2.6 && \
-	make && \
-	make modules_install && \
-	depmod -a
-	
 RUN	git clone https://github.com/iojs/io.js.git /home/io.js && \
 	cd /home/io.js && \
 	git checkout v1.x && \
 	./configure --with-lttng && \
 	make && \
 	make install
-	
-RUN 	groupadd -r tracing
-RUN	usermod -aG tracing vagrant; lttng-sessiond -b
