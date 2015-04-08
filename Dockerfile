@@ -6,7 +6,8 @@ RUN apt-get install -y git curl git-core wget build-essential gcc \
  	python3-dev uuid-dev libc6-dev libglib2.0-dev bison Flex \
  	libtool autoconf libxml2-dev libpopt-dev python3-sphinx swig && \
  	export PYTHON="python3" && \
-	export PYTHON_CONFIG="/usr/bin/python3-config" && \
+	export PYTHON_CONFIG="/usr/bin/python3-config"
+	
 RUN	git clone git://git.urcu.so/userspace-rcu.git /home/urcu && \
 	cd /home/urcu && \
 	git checkout stable-0.8 &&\
